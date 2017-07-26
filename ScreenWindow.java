@@ -15,6 +15,7 @@ import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
@@ -52,23 +53,36 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 	BufferedImage[] greenorangeSpider = new BufferedImage[50];
 	BufferedImage[] greenyellowSpider = new BufferedImage[50];
 	
+	ArrayList<BufferedImage[]> spiders;
+	
 	int[] walking = {34,35,36,37,38,39};
 	int poseControl;
+	int spiderSelector;
 	
 	public ScreenWindow(){
 		super();
 		
 		loadGraphics();
 		poseControl = 0;
-		
+		spiderSelector = 0;
 		
 		xpos = 0;
 		imgBuffer = this.createImage(800, 150);
 	
 		
 		
-		
-		
+		spiders = new ArrayList<BufferedImage[]>();
+		spiders.add(greenSpider);
+		spiders.add(blueSpider);
+		spiders.add(redSpider);
+		spiders.add(redyellowSpider);
+		spiders.add(silverredSpider);
+		spiders.add(silverSpider);
+		spiders.add(bluesilverSpider);
+		spiders.add(blueorangeSpider);
+		spiders.add(silveryellowSpider);
+		spiders.add(greenorangeSpider);
+		spiders.add(greenyellowSpider);
 		
 		//more window stuff
 		this.addWindowListener(this);
@@ -121,7 +135,7 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 		g2.fillRect(0, 0, this.getWidth(), this.getHeight());
 		
 		
-		g2.drawImage(blueorangeSpider[walking[poseControl]], xpos, 50, null);
+		g2.drawImage(spiders.get(spiderSelector)[walking[poseControl]], xpos, 50, null);
 		
 	
 		
@@ -228,7 +242,10 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		
+		spiderSelector++;
+		if(spiderSelector >= spiders.size()){
+			spiderSelector = 0;
+		}
 	}
 
 	@Override
