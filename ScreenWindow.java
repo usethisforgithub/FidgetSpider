@@ -63,8 +63,9 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 	
 	public ScreenWindow(){
 		super();
-	
 		loadGraphics();
+		
+		
 		poseControl = 0;
 		spiderSelector = 0;
 		
@@ -97,9 +98,8 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 		isRunning = true;
 		isDone = false;
 		this.setVisible(true);
-		
 		this.setResizable(false);
-		
+		this.setIconImage(redSpider[21]);
 		
 	
 		
