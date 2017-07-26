@@ -287,7 +287,6 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 		int counter = 0;
 		for(int i = 0; i < rows; i++){
 			for(int j = 0; j < col; j++){
-				System.out.println(counter);
 				greenSpider[counter] = new BufferedImage(64,64,greenSpriteSheet.getType());
 				Graphics2D gr = greenSpider[counter].createGraphics();
 				gr.drawImage(greenSpriteSheet, 0, 0, 64,64,64*j,64*i,64*j + 64, 64*i + 64, null);
@@ -306,7 +305,6 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 		counter = 0;
 		for(int i = 0; i < rows; i++){
 			for(int j = 0; j < col; j++){
-				System.out.println(counter);
 				blueSpider[counter] = new BufferedImage(64,64,blueSpriteSheet.getType());
 				Graphics2D gr = blueSpider[counter].createGraphics();
 				gr.drawImage(blueSpriteSheet, 0, 0, 64,64,64*j,64*i,64*j + 64, 64*i + 64, null);
@@ -325,7 +323,6 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 		counter = 0;
 		for(int i = 0; i < rows; i++){
 			for(int j = 0; j < col; j++){
-				System.out.println(counter);
 				redSpider[counter] = new BufferedImage(64,64,redSpriteSheet.getType());
 				Graphics2D gr = redSpider[counter].createGraphics();
 				gr.drawImage(redSpriteSheet, 0, 0, 64,64,64*j,64*i,64*j + 64, 64*i + 64, null);
@@ -344,7 +341,6 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 		counter = 0;
 		for(int i = 0; i < rows; i++){
 			for(int j = 0; j < col; j++){
-				System.out.println(counter);
 				redyellowSpider[counter] = new BufferedImage(64,64,redyellowSpriteSheet.getType());
 				Graphics2D gr = redyellowSpider[counter].createGraphics();
 				gr.drawImage(redyellowSpriteSheet, 0, 0, 64,64,64*j,64*i,64*j + 64, 64*i + 64, null);
@@ -363,7 +359,6 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 		counter = 0;
 		for(int i = 0; i < rows; i++){
 			for(int j = 0; j < col; j++){
-				System.out.println(counter);
 				silverredSpider[counter] = new BufferedImage(64,64,silverredSpriteSheet.getType());
 				Graphics2D gr = silverredSpider[counter].createGraphics();
 				gr.drawImage(silverredSpriteSheet, 0, 0, 64,64,64*j,64*i,64*j + 64, 64*i + 64, null);
@@ -382,7 +377,6 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 		counter = 0;
 		for(int i = 0; i < rows; i++){
 			for(int j = 0; j < col; j++){
-				System.out.println(counter);
 				silverSpider[counter] = new BufferedImage(64,64,silverSpriteSheet.getType());
 				Graphics2D gr = silverSpider[counter].createGraphics();
 				gr.drawImage(silverSpriteSheet, 0, 0, 64,64,64*j,64*i,64*j + 64, 64*i + 64, null);
@@ -401,7 +395,6 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 		counter = 0;
 		for(int i = 0; i < rows; i++){
 			for(int j = 0; j < col; j++){
-				System.out.println(counter);
 				bluesilverSpider[counter] = new BufferedImage(64,64,bluesilverSpriteSheet.getType());
 				Graphics2D gr = bluesilverSpider[counter].createGraphics();
 				gr.drawImage(bluesilverSpriteSheet, 0, 0, 64,64,64*j,64*i,64*j + 64, 64*i + 64, null);
@@ -420,7 +413,6 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 		counter = 0;
 		for(int i = 0; i < rows; i++){
 			for(int j = 0; j < col; j++){
-				System.out.println(counter);
 				blueorangeSpider[counter] = new BufferedImage(64,64,blueorangeSpriteSheet.getType());
 				Graphics2D gr = blueorangeSpider[counter].createGraphics();
 				gr.drawImage(blueorangeSpriteSheet, 0, 0, 64,64,64*j,64*i,64*j + 64, 64*i + 64, null);
@@ -439,7 +431,6 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 		counter = 0;
 		for(int i = 0; i < rows; i++){
 			for(int j = 0; j < col; j++){
-				System.out.println(counter);
 				silveryellowSpider[counter] = new BufferedImage(64,64,silveryellowSpriteSheet.getType());
 				Graphics2D gr = silveryellowSpider[counter].createGraphics();
 				gr.drawImage(silveryellowSpriteSheet, 0, 0, 64,64,64*j,64*i,64*j + 64, 64*i + 64, null);
@@ -458,7 +449,6 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 		counter = 0;
 		for(int i = 0; i < rows; i++){
 			for(int j = 0; j < col; j++){
-				System.out.println(counter);
 				greenorangeSpider[counter] = new BufferedImage(64,64,greenorangeSpriteSheet.getType());
 				Graphics2D gr = greenorangeSpider[counter].createGraphics();
 				gr.drawImage(greenorangeSpriteSheet, 0, 0, 64,64,64*j,64*i,64*j + 64, 64*i + 64, null);
@@ -477,7 +467,6 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 		counter = 0;
 		for(int i = 0; i < rows; i++){
 			for(int j = 0; j < col; j++){
-				System.out.println(counter);
 				greenyellowSpider[counter] = new BufferedImage(64,64,greenyellowSpriteSheet.getType());
 				Graphics2D gr = greenyellowSpider[counter].createGraphics();
 				gr.drawImage(greenyellowSpriteSheet, 0, 0, 64,64,64*j,64*i,64*j + 64, 64*i + 64, null);
