@@ -54,22 +54,26 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 	BufferedImage[] greenyellowSpider = new BufferedImage[50];
 	
 	ArrayList<BufferedImage[]> spiders;
-	
-	int[] walking = {34,35,36,37,38,39};
+	int[] currentAnimationSequence;
+	int[] walkingRight = {34,35,36,37,38,39};
+	int[] walkingLeft = {14,15,16,17,18,19};
 	int poseControl;
 	int spiderSelector;
+	int walkSpeed;
 	
 	public ScreenWindow(){
 		super();
-		
+	
 		loadGraphics();
 		poseControl = 0;
 		spiderSelector = 0;
 		
+		walkSpeed = 5;
+		
 		xpos = 0;
 		imgBuffer = this.createImage(800, 150);
 	
-		
+		currentAnimationSequence = walkingRight;
 		
 		spiders = new ArrayList<BufferedImage[]>();
 		spiders.add(greenSpider);
@@ -105,13 +109,16 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 		while(isRunning){
 			draw();
 			poseControl++;
-			if(poseControl >= walking.length){
+			if(poseControl >= currentAnimationSequence.length){
 				poseControl = 0;
 			}
 			
-			xpos += 5;
-			if(xpos >= 800){
+			xpos += walkSpeed;
+			if(xpos > 800){
 				xpos = 0;
+			}
+			if(xpos < 0){
+				xpos = 800;
 			}
 			
 			
@@ -135,7 +142,7 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 		g2.fillRect(0, 0, this.getWidth(), this.getHeight());
 		
 		
-		g2.drawImage(spiders.get(spiderSelector)[walking[poseControl]], xpos, 50, null);
+		g2.drawImage(spiders.get(spiderSelector)[currentAnimationSequence[poseControl]], xpos, 50, null);
 		
 	
 		
@@ -212,14 +219,25 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-	
+		//right arrow
+		if(e.getKeyCode() == 39){
+			walkSpeed = 5;
+			currentAnimationSequence = walkingRight;
+		}
+		//left arrow
+		if(e.getKeyCode() == 37){
+			walkSpeed = -5;
+			currentAnimationSequence = walkingLeft;
+		}
+		
+		
 		
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+	
 	}
 
 	@Override
