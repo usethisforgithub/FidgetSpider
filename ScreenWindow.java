@@ -28,7 +28,7 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 	private Image imgBuffer;
 	
 	int xpos;
-	
+	int ypos;
 	
 	BufferedImage[] greenSpider;
 	BufferedImage[] blueSpider;
@@ -46,14 +46,21 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 	int[] currentAnimationSequence;
 	int[] walkingRight = {34,35,36,37,38,39};
 	int[] walkingLeft = {14,15,16,17,18,19};
+	int[] walkingUp = {4,5,6,7,8,9};
+	int[] walkingDown = {24,25,26,27,28,29};
+	
 	int poseControl;
 	int spiderSelector;
-	int walkSpeed;
+	int horWalkSpeed;
+	int verWalkSpeed;
+	
+	int windowXSize = 250;
+	int windowYSize = 250;
 	
 	public ScreenWindow(){
 		super();
 		
-		
+		//this.setUndecorated(true);
 		
 		greenSpider = SpriteSheet.getAsArray("spider01.png", 5, 10, 64, 64);
 		blueSpider = SpriteSheet.getAsArray("spider02.png", 5, 10, 64, 64);
@@ -68,13 +75,18 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 		greenyellowSpider = SpriteSheet.getAsArray("spider11.png", 5, 10, 64, 64);
 		
 		
+		
+		
 		poseControl = 0;
 		spiderSelector = 0;
 		
-		walkSpeed = 5;
+		horWalkSpeed = 5;
+		verWalkSpeed = 0;
 		
-		xpos = 0;
-		imgBuffer = this.createImage(800, 150);
+		xpos = windowXSize/2;
+		ypos = windowYSize/2;
+		
+		imgBuffer = this.createImage(windowXSize, windowYSize);
 	
 		currentAnimationSequence = walkingRight;
 		
@@ -95,7 +107,7 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 		this.addWindowListener(this);
 		this.addKeyListener(this);
 		this.addMouseListener(this);
-		this.setSize(800,150);
+		this.setSize(windowXSize, windowYSize);
 		this.setTitle("FIDGET SPIDER");
 		isRunning = true;
 		isDone = false;
@@ -115,14 +127,21 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 				poseControl = 0;
 			}
 			
-			xpos += walkSpeed;
-			if(xpos > 800){
+			xpos += horWalkSpeed;
+			if(xpos > windowXSize){
 				xpos = 0;
 			}
 			if(xpos < 0){
-				xpos = 800;
+				xpos = windowXSize;
 			}
 			
+			ypos += verWalkSpeed;
+			if(ypos > windowYSize){
+				ypos = 0;
+			}
+			if(ypos < 0){
+				ypos = windowYSize;
+			}
 			
 			try{
 				Thread.sleep(100);
@@ -144,7 +163,7 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 		g2.fillRect(0, 0, this.getWidth(), this.getHeight());
 		
 		
-		g2.drawImage(spiders.get(spiderSelector)[currentAnimationSequence[poseControl]], xpos, 50, null);
+		g2.drawImage(spiders.get(spiderSelector)[currentAnimationSequence[poseControl]], xpos, ypos, null);
 		
 	
 		
@@ -223,15 +242,28 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 	public void keyPressed(KeyEvent e) {
 		//right arrow
 		if(e.getKeyCode() == 39){
-			walkSpeed = 5;
+			horWalkSpeed = 5;
+			verWalkSpeed = 0;
 			currentAnimationSequence = walkingRight;
 		}
 		//left arrow
 		if(e.getKeyCode() == 37){
-			walkSpeed = -5;
+			horWalkSpeed = -5;
+			verWalkSpeed = 0;
 			currentAnimationSequence = walkingLeft;
 		}
-		
+		//up arrow
+		if(e.getKeyCode() == 38){
+			horWalkSpeed = 0;
+			verWalkSpeed = -5;
+			currentAnimationSequence = walkingUp;
+		}
+		//down arrow
+		if(e.getKeyCode() == 40){
+			horWalkSpeed = 0;
+			verWalkSpeed = 5;
+			currentAnimationSequence = walkingDown;
+		}
 		
 		
 	}
