@@ -29,29 +29,18 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 	
 	int xpos;
 	
-	BufferedImage greenSpriteSheet;
-	BufferedImage blueSpriteSheet;
-	BufferedImage redSpriteSheet;
-	BufferedImage redyellowSpriteSheet;
-	BufferedImage silverredSpriteSheet;
-	BufferedImage silverSpriteSheet;
-	BufferedImage bluesilverSpriteSheet;
-	BufferedImage blueorangeSpriteSheet;
-	BufferedImage silveryellowSpriteSheet;
-	BufferedImage greenorangeSpriteSheet;
-	BufferedImage greenyellowSpriteSheet;
 	
-	BufferedImage[] greenSpider = new BufferedImage[50];
-	BufferedImage[] blueSpider = new BufferedImage[50];
-	BufferedImage[] redSpider = new BufferedImage[50];
-	BufferedImage[] redyellowSpider = new BufferedImage[50];
-	BufferedImage[] silverredSpider = new BufferedImage[50];
-	BufferedImage[] silverSpider = new BufferedImage[50];
-	BufferedImage[] bluesilverSpider = new BufferedImage[50];
-	BufferedImage[] blueorangeSpider = new BufferedImage[50];
-	BufferedImage[] silveryellowSpider = new BufferedImage[50];
-	BufferedImage[] greenorangeSpider = new BufferedImage[50];
-	BufferedImage[] greenyellowSpider = new BufferedImage[50];
+	BufferedImage[] greenSpider;
+	BufferedImage[] blueSpider;
+	BufferedImage[] redSpider;
+	BufferedImage[] redyellowSpider;
+	BufferedImage[] silverredSpider;
+	BufferedImage[] silverSpider;
+	BufferedImage[] bluesilverSpider;
+	BufferedImage[] blueorangeSpider;
+	BufferedImage[] silveryellowSpider;
+	BufferedImage[] greenorangeSpider;
+	BufferedImage[] greenyellowSpider;
 	
 	ArrayList<BufferedImage[]> spiders;
 	int[] currentAnimationSequence;
@@ -63,7 +52,20 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 	
 	public ScreenWindow(){
 		super();
-		loadGraphics();
+		
+		
+		
+		greenSpider = SpriteSheet.getAsArray("spider01.png", 5, 10, 64, 64);
+		blueSpider = SpriteSheet.getAsArray("spider02.png", 5, 10, 64, 64);
+		redSpider = SpriteSheet.getAsArray("spider03.png", 5, 10, 64, 64);
+		redyellowSpider = SpriteSheet.getAsArray("spider04.png", 5, 10, 64, 64);
+		silverredSpider = SpriteSheet.getAsArray("spider05.png", 5, 10, 64, 64);
+		silverSpider = SpriteSheet.getAsArray("spider06.png", 5, 10, 64, 64);
+		bluesilverSpider = SpriteSheet.getAsArray("spider07.png", 5, 10, 64, 64);
+		blueorangeSpider = SpriteSheet.getAsArray("spider08.png", 5, 10, 64, 64);
+		silveryellowSpider = SpriteSheet.getAsArray("spider09.png", 5, 10, 64, 64);
+		greenorangeSpider = SpriteSheet.getAsArray("spider10.png", 5, 10, 64, 64);
+		greenyellowSpider = SpriteSheet.getAsArray("spider11.png", 5, 10, 64, 64);
 		
 		
 		poseControl = 0;
@@ -272,207 +274,5 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 		
 	}
 
-	private void loadGraphics(){
-		
-		
-		try {
-			greenSpriteSheet = ImageIO.read(new File("spider01.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			greenSpriteSheet = null;
-			e.printStackTrace();
-		}
-		int rows = 5;
-		int col = 10;
-		int counter = 0;
-		for(int i = 0; i < rows; i++){
-			for(int j = 0; j < col; j++){
-				greenSpider[counter] = new BufferedImage(64,64,greenSpriteSheet.getType());
-				Graphics2D gr = greenSpider[counter].createGraphics();
-				gr.drawImage(greenSpriteSheet, 0, 0, 64,64,64*j,64*i,64*j + 64, 64*i + 64, null);
-				gr.dispose();
-				counter ++;
-			}
-		}
-		
-		try {
-			blueSpriteSheet = ImageIO.read(new File("spider02.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			blueSpriteSheet = null;
-			e.printStackTrace();
-		}
-		counter = 0;
-		for(int i = 0; i < rows; i++){
-			for(int j = 0; j < col; j++){
-				blueSpider[counter] = new BufferedImage(64,64,blueSpriteSheet.getType());
-				Graphics2D gr = blueSpider[counter].createGraphics();
-				gr.drawImage(blueSpriteSheet, 0, 0, 64,64,64*j,64*i,64*j + 64, 64*i + 64, null);
-				gr.dispose();
-				counter ++;
-			}
-		}
-		
-		try {
-			redSpriteSheet = ImageIO.read(new File("spider03.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			redSpriteSheet = null;
-			e.printStackTrace();
-		}
-		counter = 0;
-		for(int i = 0; i < rows; i++){
-			for(int j = 0; j < col; j++){
-				redSpider[counter] = new BufferedImage(64,64,redSpriteSheet.getType());
-				Graphics2D gr = redSpider[counter].createGraphics();
-				gr.drawImage(redSpriteSheet, 0, 0, 64,64,64*j,64*i,64*j + 64, 64*i + 64, null);
-				gr.dispose();
-				counter ++;
-			}
-		}
-		
-		try {
-			redyellowSpriteSheet = ImageIO.read(new File("spider04.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			redyellowSpriteSheet = null;
-			e.printStackTrace();
-		}
-		counter = 0;
-		for(int i = 0; i < rows; i++){
-			for(int j = 0; j < col; j++){
-				redyellowSpider[counter] = new BufferedImage(64,64,redyellowSpriteSheet.getType());
-				Graphics2D gr = redyellowSpider[counter].createGraphics();
-				gr.drawImage(redyellowSpriteSheet, 0, 0, 64,64,64*j,64*i,64*j + 64, 64*i + 64, null);
-				gr.dispose();
-				counter ++;
-			}
-		}
-		
-		try {
-			silverredSpriteSheet = ImageIO.read(new File("spider05.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			silverredSpriteSheet = null;
-			e.printStackTrace();
-		}
-		counter = 0;
-		for(int i = 0; i < rows; i++){
-			for(int j = 0; j < col; j++){
-				silverredSpider[counter] = new BufferedImage(64,64,silverredSpriteSheet.getType());
-				Graphics2D gr = silverredSpider[counter].createGraphics();
-				gr.drawImage(silverredSpriteSheet, 0, 0, 64,64,64*j,64*i,64*j + 64, 64*i + 64, null);
-				gr.dispose();
-				counter ++;
-			}
-		}
-		
-		try {
-			silverSpriteSheet = ImageIO.read(new File("spider06.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			silverSpriteSheet = null;
-			e.printStackTrace();
-		}
-		counter = 0;
-		for(int i = 0; i < rows; i++){
-			for(int j = 0; j < col; j++){
-				silverSpider[counter] = new BufferedImage(64,64,silverSpriteSheet.getType());
-				Graphics2D gr = silverSpider[counter].createGraphics();
-				gr.drawImage(silverSpriteSheet, 0, 0, 64,64,64*j,64*i,64*j + 64, 64*i + 64, null);
-				gr.dispose();
-				counter ++;
-			}
-		}
-		
-		try {
-			bluesilverSpriteSheet = ImageIO.read(new File("spider07.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			bluesilverSpriteSheet = null;
-			e.printStackTrace();
-		}
-		counter = 0;
-		for(int i = 0; i < rows; i++){
-			for(int j = 0; j < col; j++){
-				bluesilverSpider[counter] = new BufferedImage(64,64,bluesilverSpriteSheet.getType());
-				Graphics2D gr = bluesilverSpider[counter].createGraphics();
-				gr.drawImage(bluesilverSpriteSheet, 0, 0, 64,64,64*j,64*i,64*j + 64, 64*i + 64, null);
-				gr.dispose();
-				counter ++;
-			}
-		}
-		
-		try {
-			blueorangeSpriteSheet = ImageIO.read(new File("spider08.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			blueorangeSpriteSheet = null;
-			e.printStackTrace();
-		}
-		counter = 0;
-		for(int i = 0; i < rows; i++){
-			for(int j = 0; j < col; j++){
-				blueorangeSpider[counter] = new BufferedImage(64,64,blueorangeSpriteSheet.getType());
-				Graphics2D gr = blueorangeSpider[counter].createGraphics();
-				gr.drawImage(blueorangeSpriteSheet, 0, 0, 64,64,64*j,64*i,64*j + 64, 64*i + 64, null);
-				gr.dispose();
-				counter ++;
-			}
-		}
-		
-		try {
-			silveryellowSpriteSheet = ImageIO.read(new File("spider09.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			silveryellowSpriteSheet = null;
-			e.printStackTrace();
-		}
-		counter = 0;
-		for(int i = 0; i < rows; i++){
-			for(int j = 0; j < col; j++){
-				silveryellowSpider[counter] = new BufferedImage(64,64,silveryellowSpriteSheet.getType());
-				Graphics2D gr = silveryellowSpider[counter].createGraphics();
-				gr.drawImage(silveryellowSpriteSheet, 0, 0, 64,64,64*j,64*i,64*j + 64, 64*i + 64, null);
-				gr.dispose();
-				counter ++;
-			}
-		}
-		
-		try {
-			greenorangeSpriteSheet = ImageIO.read(new File("spider10.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			greenorangeSpriteSheet = null;
-			e.printStackTrace();
-		}
-		counter = 0;
-		for(int i = 0; i < rows; i++){
-			for(int j = 0; j < col; j++){
-				greenorangeSpider[counter] = new BufferedImage(64,64,greenorangeSpriteSheet.getType());
-				Graphics2D gr = greenorangeSpider[counter].createGraphics();
-				gr.drawImage(greenorangeSpriteSheet, 0, 0, 64,64,64*j,64*i,64*j + 64, 64*i + 64, null);
-				gr.dispose();
-				counter ++;
-			}
-		}
-		
-		try {
-			greenyellowSpriteSheet = ImageIO.read(new File("spider11.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			greenyellowSpriteSheet = null;
-			e.printStackTrace();
-		}
-		counter = 0;
-		for(int i = 0; i < rows; i++){
-			for(int j = 0; j < col; j++){
-				greenyellowSpider[counter] = new BufferedImage(64,64,greenyellowSpriteSheet.getType());
-				Graphics2D gr = greenyellowSpider[counter].createGraphics();
-				gr.drawImage(greenyellowSpriteSheet, 0, 0, 64,64,64*j,64*i,64*j + 64, 64*i + 64, null);
-				gr.dispose();
-				counter ++;
-			}
-		}
-	}
+	
 }
