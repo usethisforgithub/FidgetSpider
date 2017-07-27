@@ -54,8 +54,8 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 	int horWalkSpeed;
 	int verWalkSpeed;
 	
-	int windowXSize = 250;
-	int windowYSize = 250;
+	int windowXSize = 350;
+	int windowYSize = 150;
 	
 	public ScreenWindow(){
 		super();
