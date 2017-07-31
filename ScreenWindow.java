@@ -43,11 +43,20 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 	BufferedImage[] greenyellowSpider;
 	
 	ArrayList<BufferedImage[]> spiders;
+	String facing;
 	int[] currentAnimationSequence;
 	int[] walkingRight = {34,35,36,37,38,39};
 	int[] walkingLeft = {14,15,16,17,18,19};
 	int[] walkingUp = {4,5,6,7,8,9};
 	int[] walkingDown = {24,25,26,27,28,29};
+	int[] attackingRight = {30,31,32,32,33,34,34,34};
+	int[] attackingLeft = {10,11,12,12,13,14,14,14};
+	int[] attackingUp = {0,1,2,2,3,4,4,4};
+	int[] attackingDown = {20,21,22,22,23,24,24,24};
+	int[] standingLeft = {14};
+	int[] standingRight = {34};
+	int[] standingUp = {4};
+	int[] standingDown = {24};
 	
 	int poseControl;
 	int spiderSelector;
@@ -89,6 +98,8 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 		imgBuffer = this.createImage(windowXSize, windowYSize);
 	
 		currentAnimationSequence = walkingRight;
+		facing = "RIGHT";
+		
 		
 		spiders = new ArrayList<BufferedImage[]>();
 		spiders.add(greenSpider);
@@ -125,6 +136,29 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 			poseControl++;
 			if(poseControl >= currentAnimationSequence.length){
 				poseControl = 0;
+				
+				if(currentAnimationSequence == attackingUp){
+					horWalkSpeed = 0;
+					verWalkSpeed = 0;
+					currentAnimationSequence = standingUp;
+				}
+				if(currentAnimationSequence == attackingDown){
+					horWalkSpeed = 0;
+					verWalkSpeed = 0;
+					currentAnimationSequence = standingDown;
+				}
+				if(currentAnimationSequence == attackingLeft){
+					horWalkSpeed = 0;
+					verWalkSpeed = 0;
+					currentAnimationSequence = standingLeft;
+				}
+				if(currentAnimationSequence == attackingRight){
+					horWalkSpeed = 0;
+					verWalkSpeed = 0;
+					currentAnimationSequence = standingRight;
+				}
+				
+				
 			}
 			
 			xpos += horWalkSpeed;
@@ -242,27 +276,65 @@ public class ScreenWindow extends Frame implements WindowListener, Runnable, Key
 	public void keyPressed(KeyEvent e) {
 		//right arrow
 		if(e.getKeyCode() == 39){
+			poseControl = 0;
 			horWalkSpeed = 5;
 			verWalkSpeed = 0;
 			currentAnimationSequence = walkingRight;
+			facing = "RIGHT";
 		}
 		//left arrow
 		if(e.getKeyCode() == 37){
+			poseControl = 0;
 			horWalkSpeed = -5;
 			verWalkSpeed = 0;
 			currentAnimationSequence = walkingLeft;
+			facing = "LEFT";
 		}
 		//up arrow
 		if(e.getKeyCode() == 38){
+			poseControl = 0;
 			horWalkSpeed = 0;
 			verWalkSpeed = -5;
 			currentAnimationSequence = walkingUp;
+			facing = "UP";
 		}
 		//down arrow
 		if(e.getKeyCode() == 40){
+			poseControl = 0;
 			horWalkSpeed = 0;
 			verWalkSpeed = 5;
 			currentAnimationSequence = walkingDown;
+			facing = "DOWN";
+		}
+		
+		//spacebar
+		if(e.getKeyCode() == 32){
+			if(facing.equals("UP")){
+				poseControl = 0;
+				horWalkSpeed = 0;
+				verWalkSpeed = 0;
+				currentAnimationSequence = attackingUp;
+			}
+			if(facing.equals("DOWN")){
+				poseControl = 0;
+				horWalkSpeed = 0;
+				verWalkSpeed = 0;
+				currentAnimationSequence = attackingDown;
+			}
+			if(facing.equals("LEFT")){
+				poseControl = 0;
+				horWalkSpeed = 0;
+				verWalkSpeed = 0;
+				currentAnimationSequence = attackingLeft;
+			}
+			if(facing.equals("RIGHT")){
+				poseControl = 0;
+				horWalkSpeed = 0;
+				verWalkSpeed = 0;
+				currentAnimationSequence = attackingRight;
+			}
+			
+			
 		}
 		
 		
